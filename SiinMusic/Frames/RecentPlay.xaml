@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="SiinMusic.Frames.RecentPlay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SiinMusic.Frames"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Loaded="Page_Loaded"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <DataTemplate x:Key="songsList">
+            <Grid Height="210" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,0,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Image Source="{Binding SongThumbnail}"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <Grid Height="60" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding SongTitle}" Margin="0,0,0,5" VerticalAlignment="Bottom" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
+                        <TextBlock Text="{Binding SongAuthor}" Grid.Row="1" Grid.Column="0"/>
+                        <TextBlock Text="{Binding SongUrl}" Visibility="Collapsed"/>
+                        <TextBlock Text="{Binding SongId}" Visibility="Collapsed"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <ScrollViewer HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <StackPanel>
+            <Controls:AdaptiveGridView x:Name="SongResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,0,10,10" ItemTemplate="{StaticResource songsList}" IsItemClickEnabled="True" ItemClick="SongResults_ItemClick"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

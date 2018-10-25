@@ -1,0 +1,80 @@
+﻿<Page
+    x:Class="SiinMusic.Frames.MainSiinMusic"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SiinMusic.Frames"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Windows10version1803="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 6)"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{x:Bind NavView.CompactModeThresholdWidth}" />
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="NavView.PaneDisplayMode" Value="Top"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <NavigationView x:Name="NavView"
+                    ItemInvoked="NavView_ItemInvoked"
+                    IsSettingsVisible="True"
+                    Loaded="NavView_Loaded"
+                    Margin="0,0,0,90"
+                    Windows10version1803:BackRequested="NavView_BackRequested">
+
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="Home" x:Name="myhome" Tag="myhome"/>
+                <NavigationViewItem Icon="Clock" Content="Recent Play" x:Name="recentplay" Tag="recentplay"/>
+                <NavigationViewItem Icon="Upload" Content="Upload" x:Name="upload" Tag="upload"/>
+            </NavigationView.MenuItems>
+
+            <Frame x:Name="ContentFrame" Margin="0,-60,0,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        </NavigationView>
+        <Grid Height="90" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="95"/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Ellipse Width="90" Height="90" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="ThumbnailMusic" ImageSource="https://i.imgur.com/BP7ppW4.png" />
+                    </Ellipse.Fill>
+                </Ellipse>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1" Margin="10,0,10,0">
+                <Grid Height="90" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="45"/>
+                        <RowDefinition Height="45"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="NameMusic" Text="Reality" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom"/>
+                    <TextBlock x:Name="AuthorMusic" Text="SiinGroup" Grid.Row="1" Grid.Column="0" FontWeight="Bold"/>
+                </Grid>
+            </StackPanel>
+            <MediaPlayerElement x:Name="mediaPlayer" Source="https://storage.googleapis.com/siin-music.appspot.com/Reality%20-%20Lost%20Frequencies%20-%20Lyrics%20%2B%20Vietsub..mp3" AutoPlay="False" AreTransportControlsEnabled="True" Grid.Row="0" Grid.Column="2">
+                <MediaPlayerElement.TransportControls>
+                    <MediaTransportControls IsFullWindowButtonVisible="False" IsFullWindowEnabled="False"
+                                            IsNextTrackButtonVisible="True" IsPreviousTrackButtonVisible="True"/>
+                </MediaPlayerElement.TransportControls>
+            </MediaPlayerElement>
+        </Grid>
+    </Grid>
+</Page>

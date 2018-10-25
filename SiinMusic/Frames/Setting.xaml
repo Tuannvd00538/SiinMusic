@@ -1,0 +1,26 @@
+﻿<Page
+    x:Class="SiinMusic.Frames.Setting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SiinMusic.Frames"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Ellipse Width="150" Height="150">
+                <Ellipse.Fill>
+                    <ImageBrush x:Name="ThumbnailMusic" ImageSource="https://graph.facebook.com/100009112376938/picture?type=large" />
+                </Ellipse.Fill>
+            </Ellipse>
+            <TextBlock Text="Ngô Văn Tuấn" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Margin="0,10,0,0"/>
+            <AppBarButton Label="Logout" HorizontalAlignment="Center" Foreground="Red" Tapped="AppBarButton_Tapped">
+                <AppBarButton.Icon>
+                    <SymbolIcon Symbol="Forward"/>
+                </AppBarButton.Icon>
+            </AppBarButton>
+        </StackPanel>
+    </ScrollViewer>
+</Page>
